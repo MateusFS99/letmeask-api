@@ -19,6 +19,16 @@ POST {{baseUrl}}/rooms
 Content-Type: application/json
 
 {
-  "name": "Sala de teste",
-  "description": "Essa é uma sala de teste"
+  "name": "Sala de teste 2",
+  "description": "Essa é uma sala de teste 2"
 }
+
+###
+
+@roomId = {{createRoom.response.body.$.roomId}}
+
+###
+
+# Get room questions
+# @name getRoomQuestions
+GET {{baseUrl}}/rooms/{{roomId}}/questions
