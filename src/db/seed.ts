@@ -1,8 +1,8 @@
-import { reset, seed } from 'drizzle-seed'
-import { db, sql } from './connection.ts'
-import { schema } from './schema/index.ts'
+import { reset, seed } from "drizzle-seed";
+import { db, sql } from "./connection.ts";
+import { schema } from "./schema/index.ts";
 
-await reset(db, schema)
+await reset(db, schema);
 
 await seed(db, schema).refine((f) => {
   return {
@@ -13,9 +13,12 @@ await seed(db, schema).refine((f) => {
         description: f.loremIpsum(),
       },
     },
-  }
-})
+    questions: {
+      count: 20,
+    },
+  };
+});
 
-await sql.end()
+await sql.end();
 
-console.log('Database seeded')
+console.log("Database seeded");
